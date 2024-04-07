@@ -116,15 +116,15 @@ class homeController extends Controller
         if (count($user) > 0) {
             if (Hash::check($request->pass, $user[0]["password"])) {
 
-                session(['mobile' => $user[0]["mobile"]]);
-                session(['name' => $user[0]["name"]]);
-                session(['id' => $user[0]["id"]]);
-                session(['admin'=>1]);
+                session()->put('mobile', $user[0]["mobile"]);
+                session()->put('name', $user[0]["name"]);
+                session()->put('id', $user[0]["id"]);
+                session()->put('admin', 1);
 
                 return redirect('/admin');
             } else {
 
-                return redirect('/');
+                return redirect('/admin');
             }
         } else {
 
